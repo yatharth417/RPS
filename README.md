@@ -1,2 +1,2 @@
 # RPS
-It is a interactive rock, paper and scissor game with the computer.
+It is an interactive rock, paper and scissor game with the computer.
