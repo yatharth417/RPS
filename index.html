@@ -7,7 +7,63 @@
 </head>
 <body>
     <script>
-        console.log("Hello world!")
+        function getComputerChoice(){
+            const options=["rock","paper","scissors"];
+            const randomIndex=Math.floor(Math.random() *options.length);
+            return options[randomIndex];
+        }
+        function getHumanChoice(){
+            let userInput=prompt("Enter your choice : rock, paper or scissors");
+            const validChoices=["rock","paper","scissors"];
+            while(!validChoices.includes(userInput)){
+                userInput=prompt("Invalid choice! Enter rock, paper or scissors");
+            }
+            return userInput.toLowerCase();
+        }
+        
+        function playGame(){
+
+            let humanScore = 0;
+            let computerScore = 0;
+
+        function playRound(humanChoice, computerChoice){
+            humanChoice = humanChoice.toLowerCase();
+            console.log(`Your Choice :${humanChoice}`);
+            console.log(`Computer Choice :${computerChoice}`);
+
+            if(humanChoice==computerChoice){
+                console.log("It's a Tie.")
+                return;
+            } if ((humanChoice === "rock" && computerChoice === "scissors") ||
+                    (humanChoice === "scissors" && computerChoice === "paper") ||
+                        (humanChoice === "paper" && computerChoice === "rock")){
+                            humanScore++;
+                            console.log("You Win this round!");
+                    }
+              else{
+                    computerChoice++;
+                    console.log("Computer Wins this round!");
+                        }      
+                        console.log(`The scores are you(${humanScore}):computer(${computerScore})`);
+                    }
+            for(let i=0;i<=5;i++){
+                console.log(`Round ${i}`);
+                const humanChoice = getHumanChoice();
+                const computerChoice = getComputerChoice();
+                playRound(humanChoice, computerChoice);
+            }
+            console.log("Game Over!")
+            if(humanScore > computerScore){
+                console.log("You win the game");
+            }else{
+                console.log("Computer Wins! HAHAHAHAHA");
+            }
+            console.log(`The score was yours(${humanScore}):compter(${computerScore})`);
+        }
+        const humanSelection=getHumanChoice();
+        const computerSelection=getComputerChoice();
+
+        playGame();
     </script>
 </body>
 </html>
